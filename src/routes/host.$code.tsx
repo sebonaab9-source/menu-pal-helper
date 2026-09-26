@@ -16,7 +16,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, Minimize2, MoreVertical } from "lucide-react";
 import { controlRoom, type RoomState } from "@/lib/game.functions";
 
 export const Route = createFileRoute("/host/$code")({
