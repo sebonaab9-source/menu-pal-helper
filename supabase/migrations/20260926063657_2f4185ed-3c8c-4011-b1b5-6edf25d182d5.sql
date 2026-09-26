@@ -107,3 +107,7 @@ FROM (VALUES
 ('"Sevinç" kelimesinin eş anlamlısı hangisidir?', 'Üzüntü', 'Neşe', 'Korku', 'Öfke', 'B', 'Türkçe', 'Kolay')
 ) AS v(question, a, b, c, d, ans, cat, diff)
 WHERE NOT EXISTS (SELECT 1 FROM public.questions);
+
+CREATE POLICY "questions_server_only" ON public.questions FOR ALL TO anon, authenticated USING (false) WITH CHECK (false);
+CREATE POLICY "answers_server_only" ON public.answers FOR ALL TO anon, authenticated USING (false) WITH CHECK (false);
+CREATE POLICY "question_sets_server_only" ON public.question_sets FOR ALL TO anon, authenticated USING (false) WITH CHECK (false);
