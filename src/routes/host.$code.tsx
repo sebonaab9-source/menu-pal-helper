@@ -10,6 +10,13 @@ import { useGameState } from "@/hooks/useGameState";
 import { useStartCountdown } from "@/components/game/StartCountdown";
 import { WinnerBanner } from "@/components/game/WinnerBanner";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { LogOut, Minimize2, MoreVertical } from "lucide-react";
 import { controlRoom, type RoomState } from "@/lib/game.functions";
 
 export const Route = createFileRoute("/host/$code")({
@@ -223,22 +230,32 @@ function HostScreen() {
                   fit={isFullscreen ? "height" : "width"}
                 />
                 {isFullscreen && (
-                  <div className="absolute right-4 top-4 flex gap-2">
-                    <button
-                      onClick={toggleFullscreen}
-                      className="rounded-full border-2 border-border bg-panel px-3.5 py-1.5 text-xs font-bold text-foreground hover:bg-muted"
-                    >
-                      TAM EKRANDAN ÇIK
-                    </button>
-                    <button
-                      onClick={() => {
-                        void document.exitFullscreen();
-                        void navigate({ to: "/" });
-                      }}
-                      className="rounded-full bg-foreground px-3.5 py-1.5 text-xs font-bold text-background"
-                    >
-                      ÇIKIŞ
-                    </button>
+                  <div className="absolute right-4 top-4">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button
+                          aria-label="Menü"
+                          className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-border bg-panel text-foreground hover:bg-muted"
+                        >
+                          <MoreVertical className="h-4 w-4" />
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={toggleFullscreen}>
+                          <Minimize2 className="h-4 w-4" />
+                          Tam ekrandan çık
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => {
+                            void document.exitFullscreen();
+                            void navigate({ to: "/" });
+                          }}
+                        >
+                          <LogOut className="h-4 w-4" />
+                          Çıkış
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                 )}
               </div>
