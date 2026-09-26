@@ -16,7 +16,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, Minimize2, MoreVertical } from "lucide-react";
 import { controlRoom, type RoomState } from "@/lib/game.functions";
 
 export const Route = createFileRoute("/host/$code")({
@@ -229,35 +228,6 @@ function HostScreen() {
                   pulse={pulse}
                   fit={isFullscreen ? "height" : "width"}
                 />
-                {isFullscreen && (
-                  <div className="absolute right-4 top-4">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <button
-                          aria-label="Menü"
-                          className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-border bg-panel text-foreground hover:bg-muted"
-                        >
-                          <MoreVertical className="h-4 w-4" />
-                        </button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={toggleFullscreen}>
-                          <Minimize2 className="h-4 w-4" />
-                          Tam ekrandan çık
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onClick={() => {
-                            void document.exitFullscreen();
-                            void navigate({ to: "/" });
-                          }}
-                        >
-                          <LogOut className="h-4 w-4" />
-                          Çıkış
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                )}
               </div>
               <div className="mt-6 text-center">
                 {data.status === "PAUSED" && (
