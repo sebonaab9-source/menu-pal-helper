@@ -258,6 +258,12 @@
   100% { transform: translateY(520px) rotate(540deg); opacity: 0; }
 }
 .confetti-piece { position: absolute; top: -12px; width: 10px; height: 16px; border-radius: 2px; animation: confetti-fall 3s linear infinite; }
+@keyframes firework-burst {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translate(var(--fx, 0px), var(--fy, -60vh)) scale(0.4) rotate(540deg); opacity: 0; }
+}
+.firework-piece { position: absolute; bottom: 0; width: 12px; height: 12px; border-radius: 9999px; animation: firework-burst 1.6s cubic-bezier(.15,.6,.4,1) infinite; }
 @keyframes winner-pop {
   0% { transform: scale(0.3); opacity: 0; }
   60% { transform: scale(1.12); opacity: 1; }

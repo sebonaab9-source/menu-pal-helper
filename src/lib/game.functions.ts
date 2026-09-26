@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 
 const QUESTION_COUNT = 10;
 const STEP = 10;
-const WIN_LIMIT = 100;
+const WIN_LIMIT = 50;
 
 export type RoomStatus = "WAITING" | "READY" | "PLAYING" | "PAUSED" | "FINISHED";
 
